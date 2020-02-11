@@ -1,4 +1,5 @@
-import Greeting from './hello.js';
+import {render} from 'dyo'
+import app from './app.js';
 
-const greeting = new Greeting();
-alert(greeting.sayHello());
+const target = document.querySelector('main')
+render(app, target)

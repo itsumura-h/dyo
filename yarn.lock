@@ -1788,6 +1788,11 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
+dyo@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/dyo/-/dyo-2.0.1.tgz#4425029f0769c28d629ef8834c5fdf67d3b925d3"
+  integrity sha512-rxzoIWCLI6TwbNjj5gxbWs7el8b/TI3HIDXHJH8LOqvhPxm9SpUsZLqGogbv7T3dECeVvaFl59dVZPqlBkWF8w==
+
 ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
