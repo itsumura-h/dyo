@@ -1,22 +1,20 @@
 import React, { useState } from 'react'
 
 const Welcome=()=>{
-  const [state, setState] = useState({
-    msg: '',
-    count:0
-  })
+  const [msg, setMsg] = useState('')
+  const [count, setCount] = useState(0)
 
   return (
     <form>
       <input
         type="text"
-        onInput={event=>setState({
-          msg: event.target.value,
-          count:event.target.value.length
-        })}
+        onInput={event=>{
+          setMsg(event.target.value)
+          setCount(event.target.value.length)
+        }}
       />
-      <h1>{state.msg}</h1>
-      <h1>{state.count}</h1>
+      <h1>{msg}</h1>
+      <h1>{count}</h1>
     </form>
   )
 }

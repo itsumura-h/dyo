@@ -1,15 +1,14 @@
 import React from 'react';
-// import logo from './logo.svg';
-// import hello from './components/hello.js'
+import Hello from './components/Hello.js'
 import Welcome from './components/Welcome.js'
-import './App.css';
 
-function App() {
+const App=()=>{
+  const title = 'React'
   return (
     <div>
-      <div>{{Welcome}}</div>
+      <Hello title={title}/>
+      <Welcome />
     </div>
   );
 }
-
 export default App;
