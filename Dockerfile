@@ -24,8 +24,7 @@ RUN apk update && \
         nodejs yarn \
         && \
     update-ca-certificates
+RUN yarn config set strict-ssl false
 RUN git config --global http.sslVerify false
-RUN nimble install -y bcrypt cligen coco && \
-    nimble install https://github.com/itsumura-h/nim-allographer
 ENV PATH $PATH:/root/.nimble/bin
 WORKDIR /home/www
