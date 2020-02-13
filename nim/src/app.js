@@ -355,7 +355,8 @@ var out_of_mem_hook_18626 = [null];
     };
   }
 var lc_50207 = [{}];
-var object_id_53437 = [0];
+var object_id_53237 = [0];
+var count_217015 = [0];
 
 function is_fat_pointer_24801(ti_24803) {
 	var result_24804 = false;
@@ -442,13 +443,13 @@ function aux_write_stack_trace_21151(f_21153) {
 		
 		L6: do {
 			var j_21421 = 0;
-			var colontmp__82284 = 0;
-			colontmp__82284 = (i_21164 - 1);
-			var res_82289 = colontmp__82284;
+			var colontmp__217484 = 0;
+			colontmp__217484 = (i_21164 - 1);
+			var res_217489 = colontmp__217484;
 			L7: do {
 					L8: while (true) {
-					if (!(0 <= res_82289)) break L8;
-						j_21421 = res_82289;
+					if (!(0 <= res_217489)) break L8;
+						j_21421 = res_217489;
 						add_18638(result_21154, 0, temp_frames_21173[j_21421].Field0);
 						if ((0 < temp_frames_21173[j_21421].Field1)) {
 						if (result_21154[0] != null) { result_21154[0] = (result_21154[0]).concat(makeNimstrLit(", line: ")); } else { result_21154[0] = makeNimstrLit(", line: "); };
@@ -456,7 +457,7 @@ function aux_write_stack_trace_21151(f_21153) {
 						}
 						
 						if (result_21154[0] != null) { result_21154[0] = (result_21154[0]).concat(makeNimstrLit("\x0A")); } else { result_21154[0] = makeNimstrLit("\x0A"); };
-						res_82289 -= 1;
+						res_217489 -= 1;
 					}
 			} while(false);
 		} while(false);
@@ -558,71 +559,37 @@ function raiseOverflow() {
 	
 }
 
-function map_82159(s_82164, op_82167) {
-	var result_82169 = null;
+function map_217239(s_217244, op_217247) {
+	var result_217249 = null;
 
 	var F={procname:"map.map",prev:framePtr,filename:"sequtils.nim",line:0};
 	framePtr = F;
 		F.line = 311;
-		result_82169 = new Array(chckRange((s_82164 != null ? s_82164.length : 0), 0, 2147483647)); for (var i=0;i<chckRange((s_82164 != null ? s_82164.length : 0), 0, 2147483647);++i) {result_82169[i]=null;}		L1: do {
+		result_217249 = new Array(chckRange((s_217244 != null ? s_217244.length : 0), 0, 2147483647)); for (var i=0;i<chckRange((s_217244 != null ? s_217244.length : 0), 0, 2147483647);++i) {result_217249[i]=null;}		L1: do {
 			F.line = 312;
-			var i_82192 = 0;
+			var i_217272 = 0;
 			F.line = 2737;
-			var colontmp__82277 = 0;
+			var colontmp__217477 = 0;
 			F.line = 312;
-			colontmp__82277 = (s_82164 != null ? s_82164.length : 0);
+			colontmp__217477 = (s_217244 != null ? s_217244.length : 0);
 			F.line = 2739;
-			var i_82278 = 0;
+			var i_217478 = 0;
 			L2: do {
 				F.line = 2740;
 					L3: while (true) {
-					if (!(i_82278 < colontmp__82277)) break L3;
+					if (!(i_217478 < colontmp__217477)) break L3;
 						F.line = 312;
-						i_82192 = i_82278;
+						i_217272 = i_217478;
 						F.line = 313;
-						result_82169[chckIndx(i_82192, 0, (result_82169 != null ? result_82169.length : 0)+0-1)-0] = op_82167(s_82164[chckIndx(i_82192, 0, (s_82164 != null ? s_82164.length : 0)+0-1)-0]);
+						result_217249[chckIndx(i_217272, 0, (result_217249 != null ? result_217249.length : 0)+0-1)-0] = op_217247(s_217244[chckIndx(i_217272, 0, (s_217244 != null ? s_217244.length : 0)+0-1)-0]);
 						F.line = 2742;
-						i_82278 = addInt(i_82278, 1);
+						i_217478 = addInt(i_217478, 1);
 					}
 			} while(false);
 		} while(false);
 	framePtr = F.prev;
 
-	return result_82169;
-
-}
-
-function map_82080(s_82085, op_82088) {
-	var result_82090 = null;
-
-	var F={procname:"map.map",prev:framePtr,filename:"sequtils.nim",line:0};
-	framePtr = F;
-		F.line = 311;
-		result_82090 = new Array(chckRange((s_82085 != null ? s_82085.length : 0), 0, 2147483647)); for (var i=0;i<chckRange((s_82085 != null ? s_82085.length : 0), 0, 2147483647);++i) {result_82090[i]=null;}		L1: do {
-			F.line = 312;
-			var i_82113 = 0;
-			F.line = 2737;
-			var colontmp__82305 = 0;
-			F.line = 312;
-			colontmp__82305 = (s_82085 != null ? s_82085.length : 0);
-			F.line = 2739;
-			var i_82306 = 0;
-			L2: do {
-				F.line = 2740;
-					L3: while (true) {
-					if (!(i_82306 < colontmp__82305)) break L3;
-						F.line = 312;
-						i_82113 = i_82306;
-						F.line = 313;
-						result_82090[chckIndx(i_82113, 0, (result_82090 != null ? result_82090.length : 0)+0-1)-0] = op_82088(s_82085[chckIndx(i_82113, 0, (s_82085 != null ? s_82085.length : 0)+0-1)-0]);
-						F.line = 2742;
-						i_82306 = addInt(i_82306, 1);
-					}
-			} while(false);
-		} while(false);
-	framePtr = F.prev;
-
-	return result_82090;
+	return result_217249;
 
 }
 
@@ -630,58 +597,78 @@ import {h} from 'dyo'
 
 export default function app() {
 
-		function HEX3Aanonymous_82049(row_82057) {
-			var result_82061 = null;
+		function HEX3Aanonymous_217064(row_217072) {
+
+				function innerHEX60gensym217088_217089() {
+					var result_217091 = null;
+
+					var F={procname:":anonymous.inner`gensym217088",prev:framePtr,filename:"jsffi.nim",line:0};
+					framePtr = F;
+					BeforeRet: do {
+						F.line = 430;
+						var a_217092 = null;
+						F.line = 431;
+						a_217092 = {};
+						F.line = 443;
+						a_217092["style"] = "color:#ff6600";
+						F.line = 450;
+						result_217091 = a_217092;
+						break BeforeRet;
+					} while (false);
+					framePtr = F.prev;
+
+					return result_217091;
+
+				}
+
+			var result_217076 = null;
 
 			var F={procname:"app.:anonymous",prev:framePtr,filename:"app.nim",line:0};
 			framePtr = F;
-				F.line = 9;
-				result_82061 = h("li", {}, toJSStr(cstrToNimstr((row_82057)+"")));
+				F.line = 11;
+				result_217076 = h("li", innerHEX60gensym217088_217089(), toJSStr(cstrToNimstr((row_217072)+"")));
 			framePtr = F.prev;
 
-			return result_82061;
+			return result_217076;
 
 		}
 
-		function HEX3Aanonymous_82130(row_82138) {
-			var result_82143 = null;
+		function innerHEX60gensym217293_217294() {
+			var result_217296 = null;
 
-			var F={procname:"app.:anonymous",prev:framePtr,filename:"dyo.nim",line:0};
+			var F={procname:"app.inner`gensym217293",prev:framePtr,filename:"jsffi.nim",line:0};
 			framePtr = F;
-				F.line = 14;
-				result_82143 = row_82138;
+			BeforeRet: do {
+				F.line = 430;
+				var a_217297 = null;
+				F.line = 431;
+				a_217297 = {};
+				F.line = 443;
+				F.line = 13;
+				a_217297["onclick"] = count_217015[0] = addInt(count_217015[0], 1);
+				F.line = 450;
+				result_217296 = a_217297;
+				break BeforeRet;
+			} while (false);
 			framePtr = F.prev;
 
-			return result_82143;
+			return result_217296;
 
 		}
 
-		function HEX3Aanonymous_82209(row_82217) {
-			var result_82222 = null;
-
-			var F={procname:"app.:anonymous",prev:framePtr,filename:"dyo.nim",line:0};
-			framePtr = F;
-				F.line = 14;
-				result_82222 = row_82217;
-			framePtr = F.prev;
-
-			return result_82222;
-
-		}
-
-	var result_82016 = null;
+	var result_217031 = null;
 
 	var F={procname:"app.app",prev:framePtr,filename:"app.nim",line:0};
 	framePtr = F;
 	BeforeRet: do {
-		F.line = 5;
-		var list_82020 = [1, 2, 3];
-		F.line = 6;
-		result_82016 = h("div", {}, map_82159([h("h1", {}, "Hello"), h("ul", {}, map_82159(map_82080(list_82020, HEX3Aanonymous_82049), HEX3Aanonymous_82130))], HEX3Aanonymous_82209));
+		F.line = 7;
+		var list_217035 = [1, 2, 3];
+		F.line = 8;
+		result_217031 = h("div", {}, [h("h1", {}, "Hello"), h("ul", {}, map_217239(list_217035, HEX3Aanonymous_217064)), h("button", innerHEX60gensym217293_217294(), "button"), h("p", {}, toJSStr(cstrToNimstr((count_217015[0])+"")))]);
 		break BeforeRet;
 	} while (false);
 	framePtr = F.prev;
 
-	return result_82016;
+	return result_217031;
 
 }

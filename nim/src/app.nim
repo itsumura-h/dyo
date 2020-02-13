@@ -1,19 +1,28 @@
-import sugar, sequtils
+import sugar, sequtils, tables, json
 import ../../src/dyo
+
+var count = 0
 
 proc app():cstring {.exportc.} =
   let list = [1,2,3]
-  return h("div", newJsObject(),
-    h("h1", newJsObject(), "Hello"),
-    h("ul", newJsObject(), list.map(
-      row=> h("li", newJsObject(), $row)
-    ))
+  return tdiv(newJsObject(),
+    h1(newJsObject(), "Hello"),
+    ul(newJsObject(), list.map(
+      row => li(JsObject{"style": "color:#ff6600".cstring}, $row)
+    )),
+    h("button", JsObject{"onclick": count.inc()}, "button"),
+    h("p", newJsObject(), $count)
   )
 
 #[
-  var count = useState(0)
+import {h} from 'dyo'
 
-  h("button", {onclick:e=>count.set(e.target.value)}, "button")
-  h("p", newJsObject(), count.get)
+export default 
+
+
+var count = useState(0)
+
+h("button", {onclick:e=>count.set(e.target.value)}, "button")
+h("p", newJsObject(), count.get)
 
 ]#
