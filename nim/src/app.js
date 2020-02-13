@@ -358,6 +358,16 @@ var lc_50207 = [{}];
 var object_id_53237 = [0];
 var count_217015 = [0];
 
+function call() {
+	var F={procname:"app.call",prev:framePtr,filename:"app.nim",line:0};
+	framePtr = F;
+		F.line = 7;
+		alert("aaa");
+	framePtr = F.prev;
+
+	
+}
+
 function is_fat_pointer_24801(ti_24803) {
 	var result_24804 = false;
 
@@ -443,13 +453,13 @@ function aux_write_stack_trace_21151(f_21153) {
 		
 		L6: do {
 			var j_21421 = 0;
-			var colontmp__217484 = 0;
-			colontmp__217484 = (i_21164 - 1);
-			var res_217489 = colontmp__217484;
+			var colontmp__217478 = 0;
+			colontmp__217478 = (i_21164 - 1);
+			var res_217483 = colontmp__217478;
 			L7: do {
 					L8: while (true) {
-					if (!(0 <= res_217489)) break L8;
-						j_21421 = res_217489;
+					if (!(0 <= res_217483)) break L8;
+						j_21421 = res_217483;
 						add_18638(result_21154, 0, temp_frames_21173[j_21421].Field0);
 						if ((0 < temp_frames_21173[j_21421].Field1)) {
 						if (result_21154[0] != null) { result_21154[0] = (result_21154[0]).concat(makeNimstrLit(", line: ")); } else { result_21154[0] = makeNimstrLit(", line: "); };
@@ -457,7 +467,7 @@ function aux_write_stack_trace_21151(f_21153) {
 						}
 						
 						if (result_21154[0] != null) { result_21154[0] = (result_21154[0]).concat(makeNimstrLit("\x0A")); } else { result_21154[0] = makeNimstrLit("\x0A"); };
-						res_217489 -= 1;
+						res_217483 -= 1;
 					}
 			} while(false);
 		} while(false);
@@ -569,21 +579,21 @@ function map_217239(s_217244, op_217247) {
 			F.line = 312;
 			var i_217272 = 0;
 			F.line = 2737;
-			var colontmp__217477 = 0;
+			var colontmp__217471 = 0;
 			F.line = 312;
-			colontmp__217477 = (s_217244 != null ? s_217244.length : 0);
+			colontmp__217471 = (s_217244 != null ? s_217244.length : 0);
 			F.line = 2739;
-			var i_217478 = 0;
+			var i_217472 = 0;
 			L2: do {
 				F.line = 2740;
 					L3: while (true) {
-					if (!(i_217478 < colontmp__217477)) break L3;
+					if (!(i_217472 < colontmp__217471)) break L3;
 						F.line = 312;
-						i_217272 = i_217478;
+						i_217272 = i_217472;
 						F.line = 313;
 						result_217249[chckIndx(i_217272, 0, (result_217249 != null ? result_217249.length : 0)+0-1)-0] = op_217247(s_217244[chckIndx(i_217272, 0, (s_217244 != null ? s_217244.length : 0)+0-1)-0]);
 						F.line = 2742;
-						i_217478 = addInt(i_217478, 1);
+						i_217472 = addInt(i_217472, 1);
 					}
 			} while(false);
 		} while(false);
@@ -597,39 +607,39 @@ import {h} from 'dyo'
 
 export default function app() {
 
-		function HEX3Aanonymous_217064(row_217072) {
+		function HEX3Aanonymous_217079(row_217087) {
 
-				function innerHEX60gensym217088_217089() {
-					var result_217091 = null;
+				function innerHEX60gensym217103_217104() {
+					var result_217106 = null;
 
-					var F={procname:":anonymous.inner`gensym217088",prev:framePtr,filename:"jsffi.nim",line:0};
+					var F={procname:":anonymous.inner`gensym217103",prev:framePtr,filename:"jsffi.nim",line:0};
 					framePtr = F;
 					BeforeRet: do {
 						F.line = 430;
-						var a_217092 = null;
+						var a_217107 = null;
 						F.line = 431;
-						a_217092 = {};
+						a_217107 = {};
 						F.line = 443;
-						a_217092["style"] = "color:#ff6600";
+						a_217107["style"] = "color:#ff6600";
 						F.line = 450;
-						result_217091 = a_217092;
+						result_217106 = a_217107;
 						break BeforeRet;
 					} while (false);
 					framePtr = F.prev;
 
-					return result_217091;
+					return result_217106;
 
 				}
 
-			var result_217076 = null;
+			var result_217091 = null;
 
 			var F={procname:"app.:anonymous",prev:framePtr,filename:"app.nim",line:0};
 			framePtr = F;
-				F.line = 11;
-				result_217076 = h("li", innerHEX60gensym217088_217089(), toJSStr(cstrToNimstr((row_217072)+"")));
+				F.line = 14;
+				result_217091 = h("li", innerHEX60gensym217103_217104(), toJSStr(cstrToNimstr((row_217087)+"")));
 			framePtr = F.prev;
 
-			return result_217076;
+			return result_217091;
 
 		}
 
@@ -644,31 +654,32 @@ export default function app() {
 				F.line = 431;
 				a_217297 = {};
 				F.line = 443;
-				F.line = 13;
-				a_217297["onclick"] = count_217015[0] = addInt(count_217015[0], 1);
+				F.line = 439;
+				a_217297["onclick"] = call();
 				F.line = 450;
 				result_217296 = a_217297;
 				break BeforeRet;
 			} while (false);
 			framePtr = F.prev;
 
+			console.log(result_217296)
 			return result_217296;
 
 		}
 
-	var result_217031 = null;
+	var result_217046 = null;
 
 	var F={procname:"app.app",prev:framePtr,filename:"app.nim",line:0};
 	framePtr = F;
 	BeforeRet: do {
-		F.line = 7;
-		var list_217035 = [1, 2, 3];
-		F.line = 8;
-		result_217031 = h("div", {}, [h("h1", {}, "Hello"), h("ul", {}, map_217239(list_217035, HEX3Aanonymous_217064)), h("button", innerHEX60gensym217293_217294(), "button"), h("p", {}, toJSStr(cstrToNimstr((count_217015[0])+"")))]);
+		F.line = 10;
+		var list_217050 = [1, 2, 3];
+		F.line = 11;
+		result_217046 = h("div", {}, [h("h1", {}, "Hello"), h("ul", {}, map_217239(list_217050, HEX3Aanonymous_217079)), h("button", innerHEX60gensym217293_217294(), "button"), h("p", {}, toJSStr(cstrToNimstr((count_217015[0])+"")))]);
 		break BeforeRet;
 	} while (false);
 	framePtr = F.prev;
 
-	return result_217031;
+	return result_217046;
 
 }

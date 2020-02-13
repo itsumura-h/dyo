@@ -3,6 +3,9 @@ import ../../src/dyo
 
 var count = 0
 
+proc call() {.exportc.} =
+  alert("aaa")
+
 proc app():cstring {.exportc.} =
   let list = [1,2,3]
   return tdiv(newJsObject(),
@@ -10,7 +13,7 @@ proc app():cstring {.exportc.} =
     ul(newJsObject(), list.map(
       row => li(JsObject{"style": "color:#ff6600".cstring}, $row)
     )),
-    h("button", JsObject{"onclick": count.inc()}, "button"),
+    h("button", JsObject{"onclick": call()}, "button"),
     h("p", newJsObject(), $count)
   )
 
