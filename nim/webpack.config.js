@@ -17,34 +17,34 @@ module.exports = {
     filename: '[name].js',
     libraryTarget: 'umd'
   },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              [
-                "@babel/preset-env",
-                {
-                  "useBuiltIns": "usage",
-                  "targets": "> 0.25%, not dead",
-                  'corejs': 3
-                }
-              ]
-            ],
-            plugins: [
-              ["@babel/transform-react-jsx", {
-                "pragma": "h",
-                "pragmaFrag": "Fragment"
-              }]
-            ]
-          }
-        }
-      }
-    ]
-  },
-  devtool: 'inline-source-map'
+  // module: {
+  //   rules: [
+  //     {
+  //       test: /\.js$/,
+  //       exclude: /(node_modules|bower_components)/,
+  //       use: {
+  //         loader: 'babel-loader',
+  //         options: {
+  //           presets: [
+  //             [
+  //               "@babel/preset-env",
+  //               {
+  //                 "useBuiltIns": "usage",
+  //                 "targets": "> 0.25%, not dead",
+  //                 'corejs': 3
+  //               }
+  //             ]
+  //           ],
+  //           plugins: [
+  //             ["@babel/transform-react-jsx", {
+  //               "pragma": "h",
+  //               "pragmaFrag": "Fragment"
+  //             }]
+  //           ]
+  //         }
+  //       }
+  //     }
+  //   ]
+  // },
+  // devtool: 'inline-source-map'
 };

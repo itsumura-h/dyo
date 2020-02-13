@@ -3,8 +3,8 @@ import ../../src/dyo
 
 var count = 0
 
-proc call() {.exportc.} =
-  alert("aaa")
+proc call() =
+  echo "aaa".cstring
 
 proc app():cstring {.exportc.} =
   let list = [1,2,3]
