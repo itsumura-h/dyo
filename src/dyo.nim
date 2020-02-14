@@ -1,9 +1,12 @@
 import jsffi, sequtils, sugar, tables
-export jsffi
+import kdom_impl
 
-type State* = object
-  get*:cstring
-  set*:proc()
+export jsffi, kdom_impl
+
+type
+  State* = object
+    get*:cstring
+    set*:proc()
 
 proc useState*(val:cstring):State {.importc.}=
  return State(get:val)
@@ -57,3 +60,9 @@ template li*(arg:JsObject, children:varargs[cstring]):cstring =
 
 template li*(arg:JsObject, child:string):cstring =
   h("li".cstring, arg, child.cstring)
+
+# =============================================================================
+# proc alert(w: Window, msg: cstring)
+
+# template alert(w: Window, msg: string) =
+#   alert(w, msg.cstring)

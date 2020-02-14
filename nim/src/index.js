@@ -2,7 +2,6 @@ import {render} from 'dyo'
 import app from './app.js';
 
 const target = document.querySelector('main')
-console.log(render(app, target))
 render(app, target)
 
 
