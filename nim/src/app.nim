@@ -1,18 +1,18 @@
 import sugar, sequtils, tables, json
 import ../../src/dyo
 
-var count = 0
-
 proc call() =
   window.alert("Hello")
 
 proc input(e:Event) =
   echo e.target.value
-  count = e.target.value.len
 
 
 proc app():cstring {.exportc.} =
   let list = [1,2,3]
+  var count = useState(0)
+  echo count
+
   return tdiv(newJsObject(),
     h1(newJsObject(), "Nim-dyo"),
     ul(newJsObject(), list.map(
@@ -21,12 +21,11 @@ proc app():cstring {.exportc.} =
     h("button", JsObject{"onclick": proc()=call()}, "button"),
     tdiv(newJsObject(),
       h("input", JsObject{"oninput": proc(e:Event)=input(e)}, "")
-    ),
-    h("p", newJsObject(), $count)
+    )
   )
 
 #[
-import {h} from 'dyo'
+import {h, useState} from 'dyo'
 
 export default 
 

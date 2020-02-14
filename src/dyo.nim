@@ -4,12 +4,13 @@ import kdom_impl
 export jsffi, kdom_impl
 
 type
-  State* = object
-    get*:cstring
-    set*:proc()
+  State* = JsObject
 
-proc useState*(val:cstring):State {.importc.}=
- return State(get:val)
+proc useState*(): seq[auto] {. importjs "dyo.useState" .}
+proc useState*(initialState: State): seq[auto] {. importjs "dyo.useState" .}
+
+
+# =============================================================================
 
 proc h(typ:cstring, arg:JsObject, children:varargs[cstring]):cstring {.importc.}
 
@@ -62,7 +63,3 @@ template li*(arg:JsObject, child:string):cstring =
   h("li".cstring, arg, child.cstring)
 
 # =============================================================================
-# proc alert(w: Window, msg: cstring)
-
-# template alert(w: Window, msg: string) =
-#   alert(w, msg.cstring)
