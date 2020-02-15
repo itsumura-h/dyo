@@ -3,12 +3,18 @@ import kdom_impl
 
 export jsffi, kdom_impl
 
-type
-  State* = JsObject
+var console* {.importc, nodecl.}: JsObject
 
-proc useState*(): seq[auto] {. importjs "dyo.useState" .}
-proc useState*(initialState: State): seq[auto] {. importjs "dyo.useState" .}
+proc useStateImpl(val: int):seq[JsObject] {.importc: "useState".}
+proc useState*(val:int):JsObject =
+  var obj = useStateImpl(val)
+  return JsObject{val: obj[0], set:obj[1]}
 
+
+proc useStateImpl(val:string):seq[JsObject] {.importc: "useState".}
+proc useState*(val:string):JsObject =
+  var obj = useStateImpl(val)
+  return JsObject{val: obj[0], set:obj[1]}
 
 # =============================================================================
 
