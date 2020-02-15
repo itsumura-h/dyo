@@ -30,9 +30,16 @@ module.exports = {
                 "@babel/preset-env",
                 {
                   "useBuiltIns": "usage",
-                  "targets": "> 0.25%, not dead"
+                  "targets": "> 0.25%, not dead",
+                  'corejs': 3
                 }
               ]
+            ],
+            plugins: [
+              ["@babel/transform-react-jsx", {
+                "pragma": "h",
+                "pragmaFrag": "Fragment"
+              }]
             ]
           }
         }
