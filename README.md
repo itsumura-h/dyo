@@ -1,3 +1,10 @@
+dyo
+===
+
+This is a Nim wrapper of [dyo.js](https://dyo.js.org)
+
+# sample
+```nim
 import sugar, sequtils, tables, json
 import ../../src/dyo
 
@@ -37,21 +44,6 @@ proc app():cstring {.exportc.} =
       h("p", newJsObject(), msg.getCstr()),
     )
   )
+```
 
-
-
-
-
-
-#[
-import {h, useState} from 'dyo'
-
-export default 
-
-
-var count = useState(0)
-
-h("button", {onclick:proc()=count.set(e.target.value)}, "button")
-h("p", newJsObject(), count.get)
-
-]#
+![nim-dyo.gif](./documents/nim-dyo.gif)

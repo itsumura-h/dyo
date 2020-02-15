@@ -5,6 +5,21 @@ export jsffi, kdom_impl
 
 var console* {.importc, nodecl.}: JsObject
 
+proc getInt*(this:JsObject):int =
+  return this.val.to(int)
+
+proc getFloat*(this:JsObject):float =
+  return this.val.to(float)
+
+proc getStr*(this:JsObject):string =
+  return this.val.to(string)
+
+proc getCstr*(this:JsObject):cstring =
+  return this.val.to(cstring)
+
+proc getBool*(this:JsObject):bool =
+  return this.val.to(bool)
+
 proc useStateImpl(val: int):seq[JsObject] {.importc: "useState".}
 proc useState*(val:int):JsObject =
   var obj = useStateImpl(val)
