@@ -1,9 +1,16 @@
 import jsffi, sequtils, sugar, tables
 import kdom_impl
+import karax / [kajax]
 
-export jsffi, kdom_impl
+export jsffi, kdom_impl, kajax
 
 var console* {.importc, nodecl.}: JsObject
+
+
+proc fetchImpl(url:cstring) {.importc: "fetch".}
+proc fetch*(url:string) = fetchImpl(url.cstring)
+
+# =============================================================================
 
 proc getInt*(this:JsObject):int =
   return this.val.to(int)
@@ -20,16 +27,22 @@ proc getCstr*(this:JsObject):cstring =
 proc getBool*(this:JsObject):bool =
   return this.val.to(bool)
 
+
 proc useStateImpl(val: int):seq[JsObject] {.importc: "useState".}
+
 proc useState*(val:int):JsObject =
   var obj = useStateImpl(val)
   return JsObject{val: obj[0], set:obj[1]}
 
 
 proc useStateImpl(val:string):seq[JsObject] {.importc: "useState".}
+
 proc useState*(val:string):JsObject =
   var obj = useStateImpl(val)
   return JsObject{val: obj[0], set:obj[1]}
+
+
+proc useEffect*(didUpdate: proc()) {.importc: "useEffect".}
 
 # =============================================================================
 

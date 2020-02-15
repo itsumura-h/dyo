@@ -24,8 +24,10 @@ package.json
   "scripts": {
     // 開発用サーバーを起動するコマンド
     "serve": "webpack-dev-server",
+    // 開発用にビルドするコマンド
+    "dev": "webpack --config webpack.config.js --mode development"
     // 本番用にビルドするコマンド
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js --mode production"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",

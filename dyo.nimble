@@ -14,3 +14,4 @@ backend       = "js"
 
 requires "nim >= 1.0.4"
 requires "cligen >= 0.9.42"
+requires "karax >= 1.1.0"

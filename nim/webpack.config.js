@@ -12,7 +12,7 @@ module.exports = {
   },
   entry: {index: './src/index.js'},
   output: {
-    path: path.join(__dirname, "dist"),
+    path: path.join(__dirname, "dist/js"),
     publicPath: "/js/",
     filename: '[name].js',
     libraryTarget: 'umd'

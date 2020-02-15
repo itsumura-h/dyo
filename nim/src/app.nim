@@ -1,4 +1,4 @@
-import sugar, sequtils, tables, json
+import sugar, sequtils, tables, json, times, strformat
 import ../../src/dyo
 
 proc call() =
@@ -15,6 +15,23 @@ proc app():cstring {.exportc.} =
   let list = [1,2,3]
   let count = useState(0)
   let msg = useState("")
+  
+  let response = useState("")
+
+  proc getPageView() =
+    let startDay = (getTime().utc + initTimeInterval(days = -7)).format("yyyyMMdd")
+    let endDay = (getTime().utc + initTimeInterval(days = -1)).format("yyyyMMdd")
+    let url = &"https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia.org/all-access/all-agents/Nim_(programming_language)/daily/{startDay}/{endDay}"
+    ajaxGet(url, @[],
+      proc(httpStatus: int, resp: cstring) =
+        response.set(resp)
+    )
+
+  useEffect(
+    proc()=
+      getPageView()
+  )
+  
 
   return h("div", newJsObject(),
     h("h1", newJsObject(), "Nim-dyo"),
@@ -35,7 +52,14 @@ proc app():cstring {.exportc.} =
       h("p", newJsObject(), $count.getInt()),
       h("input", JsObject{oninput: proc(e:Event)=msg.set(e.target.value)}, ""),
       h("p", newJsObject(), msg.getCstr()),
-    )
+    ),
+    h("hr", newJsObject(), ""),
+    h("div", newJsObject(),
+      h("h2", newJsObject(), "useEffect"),
+      h("p", JsObject{style: "width:100%".cstring}, response.getCstr()),
+      h("canvas", JsObject{id: "chart".cstring}, "")
+    ),
+    h("script", JsObject{src: "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js".cstring}, "")
   )
 
 
@@ -44,7 +68,7 @@ proc app():cstring {.exportc.} =
 
 
 #[
-import {h, useState} from 'dyo'
+import {h, useState, useEffect} from 'dyo'
 
 export default 
 

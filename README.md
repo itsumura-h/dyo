@@ -1,7 +1,7 @@
 dyo
 ===
 
-This is a Nim wrapper of [dyo.js](https://dyo.js.org)
+This is a Nim wrapper of [dyo.js](https://dyo.js.org)  
 
 # sample
 ```nim
@@ -47,3 +47,15 @@ proc app():cstring {.exportc.} =
 ```
 
 ![nim-dyo.gif](./documents/nim-dyo.gif)
+
+# Support API
+- [x] useState
+- [ ] useReducer
+- [ ] useContext
+- [ ] useResource
+- [x] useEffect
+- [ ] useLayout
+- [ ] useRef
+- [ ] useMemo
+- [ ] useCallback
+- [ ] useResource
