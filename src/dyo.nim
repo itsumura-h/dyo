@@ -1,8 +1,8 @@
 import jsffi, sequtils, sugar, tables
 import kdom_impl
-import karax / [kajax]
+import karax / [kajax, jjson]
 
-export jsffi, kdom_impl, kajax
+export jsffi, kdom_impl, kajax, jjson
 
 var console* {.importc, nodecl.}: JsObject
 
@@ -29,15 +29,27 @@ proc getBool*(this:JsObject):bool =
 
 
 proc useStateImpl(val: int):seq[JsObject] {.importc: "useState".}
-
 proc useState*(val:int):JsObject =
   var obj = useStateImpl(val)
   return JsObject{val: obj[0], set:obj[1]}
 
+proc useStateImpl(val:float):seq[JsObject] {.importc: "useState".}
+proc useState*(val:float):JsObject =
+  var obj = useStateImpl(val)
+  return JsObject{val: obj[0], set:obj[1]}
 
 proc useStateImpl(val:string):seq[JsObject] {.importc: "useState".}
-
 proc useState*(val:string):JsObject =
+  var obj = useStateImpl(val)
+  return JsObject{val: obj[0], set:obj[1]}
+
+proc useStateImpl(val:bool):seq[JsObject] {.importc: "useState".}
+proc useState*(val:bool):JsObject =
+  var obj = useStateImpl(val)
+  return JsObject{val: obj[0], set:obj[1]}
+
+proc useStateImpl(val:JsonNode):seq[JsObject] {.importc: "useState".}
+proc useState*(val:JsonNode):JsObject =
   var obj = useStateImpl(val)
   return JsObject{val: obj[0], set:obj[1]}
 

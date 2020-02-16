@@ -1,4 +1,5 @@
-import sugar, sequtils, tables, json, times, strformat
+import sugar, sequtils, tables, times, strformat
+from json import add
 import ../../src/dyo
 
 proc call() =
@@ -15,6 +16,7 @@ proc app():cstring {.exportc.} =
   let list = [1,2,3]
   let count = useState(0)
   let msg = useState("")
+  var data = useState(newJArray())
   
   let response = useState("")
 
@@ -25,7 +27,13 @@ proc app():cstring {.exportc.} =
     ajaxGet(url, @[],
       proc(httpStatus: int, resp: cstring) =
         response.set(resp)
+
+        var tmp = newJArray(7)
+        var json = fromJson[JsonNode](resp)
+        for i, row in json["items"]:
+          tmp[i] = row
     )
+
 
   useEffect(
     proc()=
