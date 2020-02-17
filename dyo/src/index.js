@@ -1,8 +1,9 @@
 import {render} from 'dyo'
-import app from './app.js';
+import(/* webpackChunkName: "app" */ './app.js').then(module=>{
+  const target = document.querySelector('main')
+  render(module.default, target)
+})
 
-const target = document.querySelector('main')
-render(app, target)
 
 
 // import {http} from 'http'
