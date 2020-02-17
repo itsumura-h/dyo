@@ -1,5 +1,5 @@
 import sugar, sequtils, tables, times, strformat
-from json import add
+from json import add, pairs
 import ../../src/dyo
 
 proc call() =
@@ -28,10 +28,13 @@ proc app():cstring {.exportc.} =
       proc(httpStatus: int, resp: cstring) =
         response.set(resp)
 
-        var tmp = newJArray(7)
         var json = fromJson[JsonNode](resp)
-        for i, row in json["items"]:
-          tmp[i] = row
+        var tmp = newSeq[int](json["items"].len)
+        var i = 0
+        for row in json["items"].items:
+          tmp[i] = row["views"].getInt
+          i += 1
+        console.log(tmp)
     )
 
 
@@ -65,7 +68,21 @@ proc app():cstring {.exportc.} =
     h("div", newJsObject(),
       h("h2", newJsObject(), "useEffect"),
       h("p", JsObject{style: "width:100%".cstring}, response.getCstr()),
-      h("canvas", JsObject{id: "chart".cstring}, "")
+      h("canvas", JsObject{id: "chart".cstring}, ""),
+      h("script" newJsObject(), &"""
+        var ctx = document.getElementById("myChart");
+        var myLineChart = new Chart(ctx, {
+          type: 'line',
+          datasets: [
+            {
+            label: 'nim wiki page view',
+            data: [35, 34, 37, 35, 34, 35, 34, 25],
+            borderColor: "rgba(255,0,0,1)",
+            backgroundColor: "rgba(0,0,0,0)"
+            }
+          ]
+        }
+      """)
     ),
     h("script", JsObject{src: "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js".cstring}, "")
   )
